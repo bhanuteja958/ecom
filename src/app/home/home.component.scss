@@ -1,0 +1,55 @@
+*{
+    padding:0px;
+    margin:0px;
+    font-family:'PT Sans',sans-serif;
+}
+//hero section
+.hero{
+    width:95%;
+    margin:auto;
+    display:grid;
+    grid-template-columns: 60% 40%;
+
+    .hero_img{
+        height:550px;
+        animation: upDown 1s ease-in-out 2s infinite alternate;
+        text-align: left;
+    }
+    .hero_content{
+        display:flex;
+        align-items: center;
+        h1{
+            font-size:35px;
+        }
+        .hero_content_mission {
+            margin:10px 0px;
+            p{
+                font-size:45px;
+                font-weight: bold;
+            }
+        }
+        button{
+            background:#B44668;
+            width:100%;
+            font-size:40px;
+            font-weight: 500;
+            color:white;
+            border:0px;
+            padding :10px;
+            border-radius:35px;
+            text-align:center;
+        }
+    }
+}
+
+
+//Animations of home page
+
+@keyframes upDown{
+    from{
+        transform: translateY(0px);
+    }
+    to{
+        transform:translateY(-10px);
+    } 
+}

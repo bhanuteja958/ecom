@@ -1,0 +1,68 @@
+//initial styling
+*{
+    margin:0px;
+    padding:0px;
+}
+
+//login-container styling
+.signup-container{
+    margin:auto;
+    width:95%;
+    height:70vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-form{
+    width:50%;
+    padding:20px;
+
+    button{
+        display:block;
+        width:95%;
+        margin:15px auto;
+        padding:8px;
+        font-size: 1.2em;
+        color: white;
+        font-weight: bold;
+        background-color: #B44668;
+        border:none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    .signup-password{
+        display:grid;
+        grid-template-columns: repeat(2,1fr);
+        width:95%;
+        margin: 0px auto;
+        .form-group{
+            margin:0px;
+        }
+    }
+
+}
+
+.form-group{
+    width:95%;
+    margin:10px auto;
+
+    label,input{
+        display:block;  
+    }
+
+    label{
+        font-size:1.2em;
+        font-weight:bold;
+        margin:5px 0px;
+    }
+
+    input{
+        padding:5px 10px;
+        width:95%;
+        border-radius:20px;
+        border:2px solid black;
+        font-size: 18px;
+    }
+}

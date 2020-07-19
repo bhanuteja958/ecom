@@ -1,0 +1,55 @@
+//initial styling
+*{
+    margin:0px;
+    padding:0px;
+}
+
+//shop-container styling
+.shop-container{
+    width:95%;
+    display:grid;
+    grid-template-columns: 23% 77%;
+    margin: auto;
+}
+
+//shop-categories styling
+.shop-categories{
+    margin-right:20px;
+  
+
+    //category list styling
+    ul{
+        list-style: none;
+        text-align: center;
+        background-color: white;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    ul li{
+        padding:10px 0px;
+        font-size: 1.2em;
+        font-weight:600;
+    }
+
+    //category list title styling
+    .shop-categories-title{
+        background-color:#B44668 ;
+        color:white;
+    }
+
+    .shop-category{
+        cursor: pointer;
+        &:hover{
+            background-color:#B44668;
+            color: white;
+        }
+    }
+
+}
+
+
+.shop-products{
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    height:80vh;
+}
