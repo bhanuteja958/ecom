@@ -2,6 +2,7 @@ body,html{
     font-family:'PT Sans', sans-serif;
     margin:0px;
     padding:0px;
+    overflow-x: hidden;
 }
 
 button,input,textarea{
@@ -10,3 +11,4 @@ button,input,textarea{
         outline: none;
     }
 }
+

@@ -1,0 +1,48 @@
+<div class="cart-container">
+    <div class="cart-items">
+          <h1>Cart Items</h1>
+          <p *ngIf="cartService.cart.length === 0">No items in cart</p>
+          <table *ngIf="cartService.cart.length >0">
+              <tr>
+                  <th>Item</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+              </tr>
+              <tr *ngFor="let item of cartService.cart">
+                  <td>{{item.name}}</td>
+                  <td>{{item.count}}</td>
+                  <td>{{item.price*item.count}}</td>
+                  <td class="delete-icon" (click)="onDeleteClick(item.name)">
+                      <abbr title="Remove Item">
+                        <img src="../../assets/delete-icon.svg" alt="delete icon">
+                      </abbr>
+                      
+                  </td>
+              </tr>
+          </table>
+    </div>
+    <div >
+        <div class="cart-invoice">
+            <h1>Pricing</h1>
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>Rs.{{cartService.total}}</td>
+                </tr>
+                <tr>
+                    <td>Taxes</td>
+                    <td>Rs.{{taxes}}</td>
+                </tr>
+                <tr>
+                    <td>Delivery Fee</td>
+                    <td>Rs.500</td>
+                </tr>
+                <tr>
+                    <th>Total Price</th>
+                    <th>Rs.{{totalPrice}}</th>
+                </tr>
+            </table>
+            <button>Checkout</button>
+        </div>
+    </div>
+</div>

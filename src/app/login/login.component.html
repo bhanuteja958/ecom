@@ -1,14 +1,25 @@
 <div class="login-container">
+    <div class="loader" *ngIf="showLoader">
+        <app-loader></app-loader>
+    </div>
+    <p class="success" *ngIf="showSuccess">Succesfully signed up</p>
+    <p class="error" *ngIf="showError">{{errorMsg}}</p>
     <form #loginForm="ngForm" (ngSubmit)="onLoginSubmit(loginForm)" class="login-form">
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" [(ngModel)]="email">
+            <input type="email" name="email" id="email" ngModel #email="ngModel" required>
+            <div *ngIf="email.touched && !email.valid">
+                <p class="error-msg" *ngIf="email.errors.required">Email is required</p>
+            </div>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" name="password" id="password" [(ngModel)]="password">
+            <input type="password" name="password" id="password" ngModel #password="ngModel" required>
+            <div *ngIf="password.touched && !password.valid">
+                <p class="error-msg" *ngIf="password.errors.required">Password is required</p>
+            </div>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" [disabled]="!loginForm.valid" >Login</button>
         <a href="#">Don't have an account?create one</a>
     </form>
 </div>

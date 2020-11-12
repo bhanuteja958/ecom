@@ -2,14 +2,34 @@
     <div class="shop-categories">
         <ul>
             <li class="shop-categories-title">Categories</li>
-            <li class="shop-category">All</li>
-            <li class="shop-category">Bicycle</li>
-            <li class="shop-category">Theory 11</li>
-            <li class="shop-category">Cartimundi</li>
-            <li class="shop-category">Cardistry Decks</li>
-            <li class="shop-category">Dan and Dave</li>
+            <li class="shop-category" (click)="onCategoryClick('all')" [ngClass]="{
+                selected:category === 'all'
+            }">All</li>
+            <li class="shop-category"  (click)="onCategoryClick('bicycle')" [ngClass]="{
+                selected:category === 'bicycle'
+            }">Bicycle</li>
+            <li class="shop-category"  (click)="onCategoryClick('theory11')" [ngClass]="{
+                selected:category === 'theory11'
+            }">Theory 11</li>
+            <li class="shop-category"  (click)="onCategoryClick('cartimundi')" [ngClass]="{
+                selected:category === 'cartimundi'
+            }">Cartimundi</li>
+            <li class="shop-category"  (click)="onCategoryClick('cardistry')"[ngClass]="{
+                selected:category === 'cardistry'
+            }">Cardistry Decks</li>
+            <li class="shop-category"  (click)="onCategoryClick('dan_and_dave')" [ngClass]="{
+                selected:category === 'dan_and_dave'
+            }">Dan and Dave</li>
         </ul>
     </div>
     <div class="shop-products">
+        <div class="card-decks">
+            <div class="card-product"  *ngFor="let deck of displayDecks" (click)="onProductClick(deck)" >
+                <img src="{{deck.image}}" alt="{{deck.name}}">
+                <p class="card-name">{{deck.name}}</p>
+                <p class="card-price">Rs.{{deck.price}}</p>
+            </div>
+        </div>
+       
     </div>
 </div>

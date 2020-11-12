@@ -1,0 +1,112 @@
+*{
+    padding:0px;
+    margin:0px;
+}
+
+.cart-container{
+    width:95%;
+    margin:1rem auto;
+    display:grid;
+    grid-template-columns: 65% 35%;
+}
+
+.cart-items{
+    background-color: white;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
+    height:80vh;
+    
+    h1{
+        text-align:center;
+        color:white;
+        background-color:#B44668;
+        padding:0.3rem;
+    }
+
+    p{
+        font-weight:bold;
+        font-size:1.3rem;
+        text-align:center;
+        margin-top:1em;
+    }
+
+    table{
+        margin:1rem auto;
+        width:100%;
+        padding:1em;
+        th,td{
+            font-size:1.3rem;
+            padding:0.5rem 0;
+        }
+
+        th{
+            font-weight:bold;
+        }
+
+        .delete-icon{
+            width:1.5em;
+            img{
+                background-color:red;
+                width:1.3rem;
+                height:1.3rem;
+                padding:0.2rem;
+            }
+           
+        }
+
+        th:nth-child(1),td:nth-child(1){
+            text-align:left;
+        }
+
+        th:nth-child(2),td:nth-child(2){
+            text-align:center;
+        }
+        th:nth-child(3),td:nth-child(3){
+            text-align:center;
+        }
+        th:nth-child(4),td:nth-child(4){
+            text-align: right;;
+        }
+    }
+}
+
+.cart-invoice{
+    background-color: white;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
+    margin-left:0.5rem;
+    text-align:right;
+    h1{
+        text-align:center;
+        color:white;
+        background-color:#B44668;
+        padding:0.3rem;
+    }
+
+    table{
+        width:100%;
+        padding:1em;
+       
+        th,td{
+            font-size:1.3rem;
+            padding:0.5rem 0;
+        }
+        th:nth-child(1),td:nth-child(1){
+            text-align:left;
+        }
+        th:nth-child(2),td:nth-child(2){
+            text-align:right;
+        }
+    }
+
+    button{
+        color:white;
+        background-color: #B44668;
+        padding:0.5em 1em;
+        width:40%;
+        margin:1rem 0.3rem;
+        font-weight:bold;
+        border:0px;
+        font-size:1.3rem;
+        border-radius: 1.5rem;
+        cursor:pointer;
+    }
+}

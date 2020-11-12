@@ -1,0 +1,66 @@
+<div class="loader" *ngIf="!displayProduct">
+    <app-loader ></app-loader>
+</div>\
+<div class="product-container" *ngIf="displayProduct">
+    <div class="product-details"  >
+        <div class="product-carousel-container">
+            <div class="product-carousel" [style.transform]="'translateX('+value+'px)'">
+                <img *ngFor="let image of product.carouselImg" src="{{image}}" alt="{{product.name}}" class="carousel-img">
+            </div>
+            <img src="../../assets/chevron-left.svg" alt="chevron left" class="carousel-control-left" (click)="onLeftCarouselControlClick()" *ngIf="displayLeftControl()" >
+            <img src="../../assets/chevron-right.svg" alt="chevron left" class="carousel-control-right"
+            (click)="onRightCarouselControlClick()" *ngIf="displayRightControl()">
+        </div>
+        <div class="product-info">
+            <div class="product-about">
+                <h1 class="product-title">{{product.name}}</h1>
+                <div class="product-quantity">
+                    <div class="quantity-container">
+                        <div class="quantity-display">
+                            <p *ngIf="productQuantity === 0">Qty</p>
+                            <p *ngIf="productQuantity > 0">{{productQuantity}}</p>
+                            <p (click)="onQuantityClick()">
+                                <img src="../../assets/chevron-down-white.svg" alt="chevron down image" [style.transform]="'rotate('+angle+'deg)'">
+                            </p>
+                        </div>
+                        <ul class="quantity-dropdown" *ngIf="showQuantity">
+                            <li (click)="onQuantityNumberClick(1)">1</li>
+                            <li (click)="onQuantityNumberClick(2)">2</li>
+                            <li (click)="onQuantityNumberClick(3)">3</li>
+                            <li (click)="onQuantityNumberClick(4)">4</li>
+                            <li (click)="onQuantityNumberClick(5)">5</li>
+                            <li (click)="onQuantityNumberClick(6)">6 (Half-Brick)</li>
+                            <li (click)="onQuantityNumberClick(12)">12 (Full-Brick)</li>
+                        </ul>
+                    </div>
+                    <button (click)="onAddToCartClick()">Add to Cart</button>
+                </div>
+                <div class="product-desc">
+                    <h3>About:</h3>
+                    <ul>
+                        <li *ngFor="let line of product.desc">
+                            {{line}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="similar-products">
+        <h2>Similar Products:</h2>
+        <div class="similar-products-display">
+            <div class="similar-product-details" *ngFor="let product of similarProducts" class="similar-product">
+                <img src="{{product.image}}" alt="{{product.name}}">
+                <p>{{product.name}}</p>
+                <p>{{product.price}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="user-comments">
+        <h2>Comments:</h2>
+        <textarea name="comment" id="comment" cols="70" rows="10" placeholder="Your comment ..." [(value)]="comment"></textarea>
+        <div class="post-button-container">
+            <button>Post</button>
+        </div>
+    </div>
+</div>
