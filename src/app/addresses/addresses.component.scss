@@ -1,0 +1,152 @@
+//initial styling
+*{
+    margin:0px;
+    padding:0px;
+}
+
+//login-container styling
+.address-container{
+    margin:auto;
+    width:95%;
+    height:70vh;
+}
+
+.loader{
+    display:flex;
+    height:100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.success{
+    background-color:lighten($color: #5cb85c, $amount: 35) ;
+    color: #5cb85c;
+    padding:10px;
+    font-size:1.1em;
+    font-weight: bold;
+    width:40%;
+    margin:auto;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.error{
+    background-color:lighten($color: #d9534f, $amount: 35) ;
+    color: #d9534f;
+    padding:10px;
+    font-size:1.1em;
+    font-weight: bold;
+    width:40%;
+    margin:auto;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.address-form{
+    width:50%;
+    padding:20px;
+    margin:auto;
+
+    button{
+        display:block;
+        width:95%;
+        margin:15px auto;
+        padding:8px;
+        font-size: 1.2em;
+        color: white;
+        font-weight: bold;
+        background-color: #B44668;
+        border:none;
+        border-radius: 20px;
+        cursor: pointer;
+
+        &:disabled{
+            background-color:lighten($color:#B44668 , $amount: 20)
+        }
+
+        &:hover{
+            background-color:darken($color:#B44668 , $amount: 10)
+        }
+    }
+
+    .address-password{
+        display:grid;
+        grid-template-columns: repeat(2,1fr);
+        width:95%;
+        margin: 0px auto;
+        .form-group{
+            margin:0px;
+        }
+    }
+
+}
+
+.form-group{
+    width:95%;
+    margin:10px auto;
+    .col-6{
+        width: 50%;
+        margin-right: 25px;
+    }
+
+    label,input{
+        display:block;  
+    }
+
+    label{
+        font-size:1.2em;
+        font-weight:bold;
+        margin:5px 0px;
+    }
+
+    input, select{
+        padding:5px 10px;
+        width:95%;
+        border-radius:20px;
+        border:2px solid black;
+        font-size: 18px;
+        transition: all 0.5S;
+    }
+
+    .error-msg{
+        background-color:#d9534f;
+        width:95%;
+        margin:auto;
+        color:white;
+        font-weight: bold;
+        letter-spacing: 1px;
+        padding:10px;
+        position: relative;
+        margin-top:6px;
+        border-radius:5px;
+        animation:slide-down 0.5s ease-in-out 1;
+        z-index:10;
+        &::after{
+            content:"";
+            border-color: #d9534f  transparent;
+            border-style: solid;
+            border-width:0px 4px 4px 4px;
+          
+            position: absolute;
+            width:0px;
+            height:0px;
+            bottom:100%;
+            left:15px;
+        }
+    }
+
+    .ng-invalid.ng-touched{
+        border:2px solid #d9534f;
+    }
+}
+
+@keyframes slide-down{
+    from{
+        opacity:0;
+        transform: translateY(-10px);
+    }
+    to{
+        opacity:1;
+        transform: translateY(0px);
+    }
+}
