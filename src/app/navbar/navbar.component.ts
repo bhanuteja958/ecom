@@ -22,8 +22,8 @@ export class NavbarComponent implements OnInit {
       if(user){
         this.loggedIn = true;
         console.log(user)
-        firestore().collection("users").where("email","==",user.email).get().then((doc)=>{
-          console.log(doc);
+        firestore().collection("users").doc(user.uid).get().then((doc)=>{
+          this.user = doc.data();
         })
       }
       else{

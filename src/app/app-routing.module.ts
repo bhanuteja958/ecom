@@ -14,7 +14,8 @@ const routes: Routes = [
   {path:"signup",component:SignupComponent},
   {path:"login",component:LoginComponent},
   {path:"product/:id",component:ProductComponent},
-  {path:"cart",component:CartComponent}
+  {path:"cart",component:CartComponent},
+  {path:"user",loadChildren:()=>import('./user/user.module').then(m=>m.UserModule)}
   
 ];
 

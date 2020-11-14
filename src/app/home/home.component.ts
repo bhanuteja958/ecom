@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
     
   }
 
-  onVisitShopClick(){
+  onVisitShopClick():void{
     this.router.navigate(['/shop']);
   }
 

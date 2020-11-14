@@ -9,10 +9,10 @@
         </ul>
         <div class="account" *ngIf="loggedIn">
             <p class="username" (click)="onAccountClick()" >
-                <span>Bhanu TEja</span>
+                <span>{{user.userName | titlecase}}</span>
                 <img src="../../assets/chevron_down.svg" alt="chevron down"  [style.transform]="'rotate('+angle+'deg)'">
             </p>
-            <ul class="account-dropdown" *ngIf="showDropDown">
+            <ul class="account-dropdown" *ngIf="showDropDown === true">
                 <li>Account</li>
                 <li>Orders</li>
                 <li>Addresses</li>

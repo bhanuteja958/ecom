@@ -128,3 +128,14 @@
         border:2px solid #d9534f;
     }
 }
+
+@keyframes slideDown{
+    from{
+        transform: translateY(-30px);
+        opacity:0;
+    }
+    to{
+        transform: translateY(0px);
+        opacity:1;
+    }
+}

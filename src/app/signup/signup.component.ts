@@ -26,8 +26,8 @@ export class SignupComponent implements OnInit {
     let password = signupForm.controls.password.value;
     let firstName = signupForm.controls.firstName.value;
     let lastName = signupForm.controls.lastName.value;
-    auth().createUserWithEmailAndPassword(email,password).then(()=>{
-     return  firestore().collection('users').add({
+    auth().createUserWithEmailAndPassword(email,password).then((userSnapshot)=>{
+     return  firestore().collection('users').doc(userSnapshot.user.uid).set({
         userName:`${firstName} ${lastName}`,
         email:email,
         address:[],
