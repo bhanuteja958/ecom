@@ -1,0 +1,85 @@
+.service {
+    position: relative;
+}
+.service h1 {
+    padding: 1rem;
+    font-family: open-sans;
+    font-weight: bolder;
+}
+.team h1 {
+    padding: 1rem;
+    font-family: open-sans;
+    font-weight: bolder;
+}
+
+.service .service-col {
+    margin-bottom: 30px;
+}
+
+.service .service-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 30px 15px;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: slategray 2px 6px 12px;
+    border-radius: 5%;
+}
+
+.service .service-content i {
+    color: #FF6F61;
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+
+.service .service-content h2 {
+    font-size: 18px;
+}
+
+.service .service-content p {
+    font-size: 15px;
+    margin: 0;
+}
+
+.team {
+    margin-bottom: 30px;
+}
+
+.team-item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background: #ffffff;
+}
+
+.team .team-img {
+    width: 100%;
+    max-width: 200px;
+    overflow: hidden;
+}
+
+.team .team-img img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    border-radius: 50%;
+    border: solid 4px pink; 
+}
+
+.team .team-text {
+    padding: 15px;
+    width: 100%;
+    max-width: calc(100% - 200px);
+}
+
+.team .team-text h2 {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.team .team-text p {
+    margin: 0;
+}
+

@@ -14,7 +14,8 @@ import { ProductComponent } from './product/product.component';
 import * as firebase from 'firebase';
 import { LoaderComponent } from './loader/loader.component';
 import { CartComponent } from './cart/cart.component';
-import { AddressesComponent } from './addresses/addresses.component'
+import { AddressesComponent } from './addresses/addresses.component';
+import { AboutUsComponent } from './about-us/about-us.component'
 
 var firebaseConfig = {
   apiKey: "AIzaSyCxij-K5h3PI6adLgOhn8IIAppnzBvuGnU",
@@ -41,7 +42,8 @@ firebase.initializeApp(firebaseConfig);
     ProductComponent,
     LoaderComponent,
     CartComponent,
-    AddressesComponent
+    AddressesComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

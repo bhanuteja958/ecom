@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { AddressesComponent } from './addresses/addresses.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:"product/:id",component:ProductComponent},
   {path:"cart",component:CartComponent},
   {path:"user",loadChildren:()=>import('./user/user.module').then(m=>m.UserModule)},
-  {path:"addresses",component:AddressesComponent}
+  {path:"addresses",component:AddressesComponent},
+  {path:"about-us",component:AboutUsComponent}
   
 ];
 
