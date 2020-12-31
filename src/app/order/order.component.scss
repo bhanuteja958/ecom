@@ -1,0 +1,106 @@
+*{
+    margin:0;
+}
+
+.order-container{
+    display:grid;
+    grid-template-columns: 60% 40%;
+    width:90%;
+    margin:auto;
+
+}
+
+.order-details{
+    h1{
+        text-align:center;
+        color:white;
+        background-color:#B44668;
+        padding:0.3rem;
+    }
+    table{
+        margin: auto;
+        width:100%;
+        padding:1em;
+        th,td{
+            font-size:1.3rem;
+            padding:0.5rem 0;
+        }
+
+        th{
+            font-weight:bold;
+        }
+
+        th:nth-child(1),td:nth-child(1){
+            text-align:left;
+        }
+
+        th:nth-child(2),td:nth-child(2){
+            text-align:center;
+        }
+        th:nth-child(3),td:nth-child(3){
+            text-align:center;
+        }
+        th:nth-child(4),td:nth-child(4){
+            text-align: right;;
+        }
+    }
+
+    .address{
+        p{
+            font-weight:bold;
+            font-size: 1em;
+        }
+    }
+}
+
+.payment-methods{
+    margin-left:1.3em;
+    h1{
+        text-align:center;
+        color:white;
+        background-color:#B44668;
+        padding:0.3rem;
+    }
+    
+    table{
+        width:100%;
+        padding:1em;
+       
+        th,td{
+            font-size:1.3rem;
+            padding:0.5rem 0;
+        }
+        th:nth-child(1),td:nth-child(1){
+            text-align:left;
+        }
+        th:nth-child(2),td:nth-child(2){
+            text-align:right;
+        }
+    }
+
+
+    .payment-type{
+        margin:5px 0;
+        label{
+            font-weight: bold;
+            font-size:1.2em;
+            margin-left:7px;
+        }
+
+    }
+    
+    button{
+        color:white;
+        background-color: #B44668;
+        padding:0.5em 1em;
+        width:40%;
+        margin:1rem 0.3rem;
+        display:block;
+        margin-left:60%;
+        font-weight:bold;
+        border:0px;
+        font-size:1.3rem;
+        border-radius: 1.5rem;
+        cursor:pointer;
+    }   
+}

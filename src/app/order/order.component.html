@@ -1,0 +1,54 @@
+<div class="order-container">
+    <div class="order-details">
+        <h1>Order Summary</h1>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+            </tr>
+            <tr *ngFor="let item of cartService.cart">
+                <td>{{item.name}}</td>
+                <td>{{item.count}}</td>
+                <td>{{item.price*item.count}}</td>
+            </tr>
+        </table>
+        <div class="address">
+            <h2>Address</h2>
+            <p>Address1 : {{user.addresses[0].address1}}</p>
+            <p>Address2 : {{user.addresses[0].address2}}</p>
+            <p>Email : {{user.addresses[0].email}}</p>
+            <p>Phone Number : {{user.addresses[0].phoneNumber}}</p>
+            <p>City : {{user.addresses[0].city}}</p>
+            <p>State : {{user.addresses[0].state}}</p>
+            <p>ZipCode : {{user.addresses[0].zip}}</p>
+        </div>
+    </div>
+    <div class="payment-methods">
+        <h1>Payment Method</h1>
+        <table>
+            <tr>
+                <td>Subtotal</td>
+                <td>Rs.{{cartService.total}}</td>
+            </tr>
+            <tr>
+                <td>Taxes</td>
+                <td>Rs.{{cartService.total*0.1}}</td>
+            </tr>
+            <tr>
+                <td>Delivery Fee</td>
+                <td>Rs.500</td>
+            </tr>
+            <tr>
+                <th>Total Price</th>
+                <th>Rs.{{cartService.total*1.1+500 |number:'1.2-2'}}</th>
+            </tr>
+        </table>
+        <h2>Payment Type:</h2>
+        <div class="payment-type">
+            <input type="radio" id="cash" name="cash">
+            <label for="cash">Cash on delivery</label>
+        </div>
+        <button>Continue</button>
+    </div>
+</div>

@@ -3,6 +3,13 @@
     margin:0px;
     font-family:'PT Sans',sans-serif;
 }
+
+.loader{
+    display:flex;
+    height:90vh;
+    align-items: center;
+    justify-content: center;
+}
 //hero section
 .hero{
     width:95%;
@@ -18,7 +25,6 @@
     .hero_content{
         display:flex;
         align-items: center;
-        animation: slideLeft 1s ease-in-out;
         h1{
             font-size:35px;
         }
@@ -55,29 +61,3 @@
         transform:translateY(-15px);
     } 
 }
-
-@keyframes slideLeft{
-   
-    from{
-        transform:translateX(100px);
-        opacity:0;
-    }
-    to{
-        transform:translate(0px);
-        opacity:1;
-    }
-    
-} 
-
-@keyframes slideRight{
-   
-    from{
-        transform:translateX(-100px);
-        opacity:0;
-    }
-    to{
-        transform:translate(0px);
-        opacity:1;
-    }
-    
-} 

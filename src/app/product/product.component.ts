@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as firebase from 'firebase'
+import {auth,firestore} from 'firebase'
+import { drop } from '../animations/drop';
 import { CartService } from '../services/cart.service';
 import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
+  animations:[
+    drop
+  ]
 })
 export class ProductComponent implements OnInit {
   showQuantity:boolean = false;
@@ -19,7 +23,9 @@ export class ProductComponent implements OnInit {
   similarProducts:any[] =[];
   angle:number = 0;
   comment:string="";
-  displayProduct:boolean = false;
+  comments:any[] = [];
+  showLoader:boolean = true;
+  notLoggedIn:boolean = false;
 
 
   constructor(
@@ -31,16 +37,16 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.productId = this.activatedRoute.snapshot.paramMap.get("id");
-    this.product = firebase.firestore().collection('cards').doc(this.productId).get().then((doc)=>{
-        this.product = doc.data();
-        this.displayProduct = true;
+    this.productService.getProduct(this.productId).then((data)=>{
+      this.product = data
+      this.showLoader = false;
     }).then(()=>{
       this.productService.getProducts().then((products)=>{
         this.similarProducts = products.filter(product=> product.category === this.product.category);
-        console.log(this.similarProducts)
       })
+    }).catch((error)=>{
+      this.showLoader = false;
     })
-
   }
 
  
@@ -97,5 +103,30 @@ export class ProductComponent implements OnInit {
     this.productQuantity = quantity;
     this.showQuantity = false;
     this.angle = 0;
+  }
+
+  onOutSideClick():void{
+    this.showQuantity = false;
+    this.angle = 0;
+  }
+
+  onPostClick():void{
+    auth().onAuthStateChanged((user)=>{
+      if(user){
+        this.productService.addComment(this.productId,this.comment,this.product,user.uid).then((msg)=>{
+          this.comment="";
+          this.productService.getProduct(this.productId).then((data)=>{
+            this.product = data
+          })
+        })
+      }
+      else{
+        this.notLoggedIn = true;
+        setTimeout(()=>{
+          this.notLoggedIn = false
+        },1500)
+      }
+    })
+  
   }
 }

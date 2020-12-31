@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService:CartService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -26,5 +28,9 @@ export class CartComponent implements OnInit {
   onDeleteClick(name:string):void{
     this.cartService.removeFromCart(name);
     this.computePrice();
+  }
+
+  onCheckout():void{
+    this.router.navigate(['/order'])
   }
 }

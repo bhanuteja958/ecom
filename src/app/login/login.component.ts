@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   errorMsg:string ='';
   showError:boolean = false;
   showLoader:boolean = false;
-  showSuccess:boolean = false;
 
   constructor(private router:Router) { }
 
@@ -28,10 +27,7 @@ export class LoginComponent implements OnInit {
     let password = loginForm.controls.password.value;
     auth().signInWithEmailAndPassword(email,password).then(()=>{
       this.showLoader = false;
-      this.showSuccess = true;
-      setTimeout(()=>{
-        this.router.navigate(['/'])
-      },2000)
+      this.router.navigate(['/'])
     }).catch((error)=>{
       this.showLoader = false;
       this.errorMsg = error.message

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
@@ -15,6 +16,8 @@ import * as firebase from 'firebase';
 import { LoaderComponent } from './loader/loader.component';
 import { CartComponent } from './cart/cart.component';
 import { AddressesComponent } from './addresses/addresses.component'
+import { from } from 'rxjs';
+import { OrderComponent } from './order/order.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyCxij-K5h3PI6adLgOhn8IIAppnzBvuGnU",
@@ -41,10 +44,12 @@ firebase.initializeApp(firebaseConfig);
     ProductComponent,
     LoaderComponent,
     CartComponent,
-    AddressesComponent
+    AddressesComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule
   ],

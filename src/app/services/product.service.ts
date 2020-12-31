@@ -1,5 +1,6 @@
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
-import {firestore} from 'firebase';
+import {auth, firestore} from 'firebase';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import {firestore} from 'firebase';
 export class ProductService{
 
   products:any[] = [];
-  constructor() {
+  constructor(private userService:UserService) {
       window.addEventListener("unload",(event)=>{
         sessionStorage.setItem("prodcuts",JSON.stringify(this.products));
       })
@@ -31,6 +32,36 @@ export class ProductService{
     })
   }
 
+  getProduct(productId):Promise<any>{
+    return new Promise((resolve,reject)=>{
+      firestore().collection("cards").doc(productId).get().then((doc)=>{
+        resolve(doc.data());
+      }).catch((error)=>{
+        reject(error.message);
+      })
+    })
+  }
+
+  addComment(productId:string,comment:string,product:any,uid:string){
+    return new Promise((resolve,reject)=>{
+      this.userService.getUser().then((user)=>{
+        firestore().collection("cards").doc(productId).set({
+          comments:[...product.comments,{
+            userId:uid,
+            userName:user.userName,
+            comment:comment
+          }]
+        },{merge:true}).then(()=>{
+          resolve("comment added")
+        }).catch((error)=>{
+          resolve("error adding comment")
+        })
+      })
+    })
+      
+  }
+
+ 
   
 
 

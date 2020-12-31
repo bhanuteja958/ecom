@@ -2,7 +2,6 @@
     <div class="loader" *ngIf="showLoader">
         <app-loader></app-loader>
     </div>
-    <p class="success" *ngIf="showSuccess">Succesfully signed up</p>
     <p class="error" *ngIf="showError">{{errorMsg}}</p>
     <form #loginForm="ngForm" (ngSubmit)="onLoginSubmit(loginForm)" class="login-form">
         <div class="form-group">

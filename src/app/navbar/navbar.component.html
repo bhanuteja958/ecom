@@ -1,4 +1,4 @@
-<nav class="nav">
+<nav class="nav" *ngIf="showNavbar">
     <img src="../../assets/logo.svg" alt="site logo" class="nav_logo">
     <div class="nav_links">
         <ul class="normal_links">
@@ -7,23 +7,23 @@
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
-        <div class="account" *ngIf="loggedIn">
-            <p class="username" (click)="onAccountClick()" >
+        <div class="account" *ngIf="loggedIn" tabindex="1"  (mouseleave)="onOutSideClick()" >
+            <p class="username" (click)="onAccountClick()"   >
                 <span>{{user.userName | titlecase}}</span>
                 <img src="../../assets/chevron_down.svg" alt="chevron down"  [style.transform]="'rotate('+angle+'deg)'">
             </p>
-            <ul class="account-dropdown" *ngIf="showDropDown === true">
+            <ul class="account-dropdown" *ngIf="showDropDown" @drop >
                 <li>Account</li>
                 <li>Orders</li>
                 <li><a routerLink = "/addresses">Addresses</a></li>
                 <li (click)="logout()">Logout</li>
             </ul>
         </div>
-        <div class="cart" *ngIf="loggedIn" (click)="onCartClick()">
+        <button (click)="onSignUpClick()" *ngIf="!loggedIn">SignUp</button>
+        <button (click)="onLoginClick()" *ngIf="!loggedIn">Login</button>
+        <div class="cart"(click)="onCartClick()">
             <img src="../../assets/cart.svg" alt="cart icon" >
             <span class="cart-item-count">{{cartService.count}}</span>
         </div>
-        <button (click)="onSignUpClick()" *ngIf="!loggedIn">SignUp</button>
-        <button (click)="onLoginClick()" *ngIf="!loggedIn">Login</button>
     </div>
 </nav>

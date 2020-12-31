@@ -1,31 +1,34 @@
 <div class="account-container">
     <h1>Your Account:</h1>
-    <form #accountForm="ngForm" (ngSubmit)="onSave(accountForm)">
+    <button class="edit-button" (click)="onEditClick()">Edit</button>
+    <p class="success" *ngIf="showSuccess">Succesfully updated</p>
+    <p class="error" *ngIf="showError">{{errorMsg}}</p>
+    <form #accountForm="ngForm" (ngSubmit)="saveDetails(accountForm)">
         <div class="form-group">
             <label for="userName">Name:</label>
-            <input type="text" name="userName" id="name" [(ngModel)]="user.userName" #userName="ngModel" required pattern="[a-zA-Z]+([\sa-zA-Z]+)?$"  [readonly]="editInfo===false">
-            <div *ngIf="userName.touched && !userName.valid">
+            <p class="userInfo" *ngIf="!editInfo">{{user.userName}}</p>
+            <input type="text" name="userName" id="name" [(ngModel)]="user.userName" #userName="ngModel" required pattern="[a-zA-Z]+([\sa-zA-Z]+)?$" *ngIf="editInfo">
+            <div *ngIf="userName?.touched && !userName?.valid">
                 <p class="error-msg" *ngIf="userName.errors.required">Name is required</p>
                 <p class="error-msg" *ngIf="userName.errors.pattern">Only alphabets allowed</p>
             </div>
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" [(ngModel)]="user.email" #email="ngModel" readonly >
+            <p class="userInfo" *ngIf="!editInfo"> {{user.email}}</p>
+            <input type="email" name="email" id="email" [(ngModel)]="user.email" #email="ngModel" readonly *ngIf="editInfo">
         </div>
         <div class="form-group">
             <label for="phone">Mobile Number:</label>
-            <input type="number" name="phone" id="phone" [(ngModel)]="user.phoneNumber" #phone="ngModel" pattern="[0-9]+" [readonly]="editInfo===false">
-            <div *ngIf="phone.touched && !phone.valid">
-                <p class="error-msg" *ngIf="phone.errors.maxLength">Length should be of 10 characters</p>
-            </div>
+            <p class="userInfo" *ngIf="!editInfo">{{user.phoneNumber}}</p>
+            <p class="userInfo" *ngIf="!editInfo && user.phoneNumber === ''">No phone Number added yet</p>
+            <input type="number" name="phone" id="phone" [(ngModel)]="user.phoneNumber" #phone="ngModel" pattern="[0-9]+" *ngIf="editInfo" (input)="checkPhoneNumberLength(phone.control.value)">
+            <p class="error-msg" *ngIf="!phoneLength">Length should be of 10 characters</p>
         </div>
-        <div class="submit-button" >
-            <input type="submit" value="Save" disabled="!accountForm.valid" 
-            [ngClass]="{
-                disabledButton: !accountForm.valid
-            }" [readonly]="editInfo"> 
-        </div>
+        <button type="submit" [disabled]="!accountForm.valid || !phoneLength" 
+        [ngClass]="{
+            disabledButton: !accountForm.valid || !phoneLength
+        }"  *ngIf="editInfo" > Save</button>
     </form>
-    <button class="edit-button" (click)="onEditClick()">Edit</button>
+    
 </div>

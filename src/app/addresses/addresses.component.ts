@@ -14,8 +14,9 @@ export class AddressesComponent implements OnInit {
   showError: boolean = false;
   showSuccess: boolean = false;
   showForm: boolean = true;
-  address: AddressType;
+  address:Object;
   countries: ReadonlyArray<string>;
+  user:any = {};
 
   constructor(private router: Router) { }
 
@@ -23,27 +24,37 @@ export class AddressesComponent implements OnInit {
   }
 
   onAddressSubmit(addressForm): void{
+    console.log(addressForm);
     this.showLoader = true;
     this.showForm = false;
     this.showError = false;
     this.address = {
       email: addressForm.email,
-      address1: addressForm.address1,
-      address2: addressForm.address2,
+      address1: addressForm.addressLine1,
+      address2: addressForm.addressLine2,
       city: addressForm.city,
       state: addressForm.state,
       zip: addressForm.ZIPCode,
       country: addressForm.country,
       phoneNumber: addressForm.phoneNumber
     };
-    this.addToAddresses();
+    this.addToAddresses(addressForm);
   }
-  addToAddresses(): void{
+  addToAddresses(addressForm): void{
     auth().onAuthStateChanged((user) => {
       if (user) {
         // console.log(user)
         //Uncomment when user storage structure is fixed
         // user.addresses.push(this.address);
+        firestore().collection("users").doc(user.uid).get().then((doc)=>{
+          this.user = doc.data();
+        }).then(()=>{
+          firestore().collection("users").doc(user.uid).set({
+            addresses:[...this.user.addresses,this.address]
+          },{merge:true}).then(()=>{
+            console.log("updated");
+          })
+        })
         this.showError = false
         this.showLoader = false;
         this.showSuccess = true;

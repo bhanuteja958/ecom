@@ -1,7 +1,7 @@
-<div class="loader" *ngIf="!displayProduct">
+<div class="loader" *ngIf="showLoader">
     <app-loader ></app-loader>
 </div>\
-<div class="product-container" *ngIf="displayProduct">
+<div class="product-container" *ngIf="!showLoader">
     <div class="product-details"  >
         <div class="product-carousel-container">
             <div class="product-carousel" [style.transform]="'translateX('+value+'px)'">
@@ -14,8 +14,8 @@
         <div class="product-info">
             <div class="product-about">
                 <h1 class="product-title">{{product.name}}</h1>
-                <div class="product-quantity">
-                    <div class="quantity-container">
+                <div class="product-quantity" (mouseleave)="onOutSideClick()">
+                    <div class="quantity-container" >
                         <div class="quantity-display">
                             <p *ngIf="productQuantity === 0">Qty</p>
                             <p *ngIf="productQuantity > 0">{{productQuantity}}</p>
@@ -23,7 +23,7 @@
                                 <img src="../../assets/chevron-down-white.svg" alt="chevron down image" [style.transform]="'rotate('+angle+'deg)'">
                             </p>
                         </div>
-                        <ul class="quantity-dropdown" *ngIf="showQuantity">
+                        <ul class="quantity-dropdown" *ngIf="showQuantity" @drop>
                             <li (click)="onQuantityNumberClick(1)">1</li>
                             <li (click)="onQuantityNumberClick(2)">2</li>
                             <li (click)="onQuantityNumberClick(3)">3</li>
@@ -33,7 +33,10 @@
                             <li (click)="onQuantityNumberClick(12)">12 (Full-Brick)</li>
                         </ul>
                     </div>
-                    <button (click)="onAddToCartClick()">Add to Cart</button>
+                    <button (click)="onAddToCartClick()" [disabled]="productQuantity ===0"
+                    [ngClass]="{
+                        disabled : productQuantity === 0
+                    }">Add to Cart</button>
                 </div>
                 <div class="product-desc">
                     <h3>About:</h3>
@@ -56,11 +59,27 @@
             </div>
         </div>
     </div>
-    <div class="user-comments">
-        <h2>Comments:</h2>
-        <textarea name="comment" id="comment" cols="70" rows="10" placeholder="Your comment ..." [(value)]="comment"></textarea>
-        <div class="post-button-container">
-            <button>Post</button>
+    
+    <div class="comment-section">
+        
+        <div class="user-comments">
+            <p *ngIf="notLoggedIn" class="notLoggedIn">Please login to comment</p>
+            <textarea name="comment" id="comment" cols="70" rows="10" placeholder="Your comment ..." [(ngModel)]="comment"></textarea>
+            <div class="post-button-container">
+                <button (click)="onPostClick()" [disabled]="comment=== ''"
+                [ngClass]="{
+                    disabled : comment === ''
+                }">Post</button>
+            </div>
+        </div>
+        <div class="comments-display">
+            <h2>Comments:</h2>
+            <h3 *ngIf="product.comments.length === 0">Be the first to comment !!</h3>
+            <div class="comment-block" *ngFor="let comment of product.comments">
+                <h3> <span>{{comment.userName[0] | uppercase}}</span>{{comment.userName |titlecase}}</h3>
+                <p>{{comment.comment}}</p>
+            </div>
         </div>
     </div>
+  
 </div>

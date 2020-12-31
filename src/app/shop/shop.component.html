@@ -1,5 +1,5 @@
-<div class="shop-container">
-    <div class="shop-categories">
+<div class="shop-container" *ngIf="!showLoader">
+    <div class="shop-categories" @slideFromLeft>
         <ul>
             <li class="shop-categories-title">Categories</li>
             <li class="shop-category" (click)="onCategoryClick('all')" [ngClass]="{
@@ -22,7 +22,7 @@
             }">Dan and Dave</li>
         </ul>
     </div>
-    <div class="shop-products">
+    <div class="shop-products" @slideFromRight>
         <div class="card-decks">
             <div class="card-product"  *ngFor="let deck of displayDecks" (click)="onProductClick(deck)" >
                 <img src="{{deck.image}}" alt="{{deck.name}}">

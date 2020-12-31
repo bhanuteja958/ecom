@@ -10,6 +10,30 @@
     position: relative;
 }
 
+.success{
+    background-color:lighten($color: #5cb85c, $amount: 35) ;
+    color: #5cb85c;
+    padding:10px;
+    font-size:1.1em;
+    font-weight: bold;
+    width:40%;
+    margin:auto;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.error{
+    background-color:lighten($color: #d9534f, $amount: 35) ;
+    color: #d9534f;
+    padding:10px;
+    font-size:1.1em;
+    font-weight: bold;
+    width:40%;
+    margin:auto;
+    text-align: center;
+    border-radius: 20px;
+}
+
 .edit-button{
     padding:0.3rem 1rem;
     color:white;
@@ -24,9 +48,32 @@
     cursor:pointer;
 }
 
+form{
+    button{
+        display:block;
+        width:99%;
+        background-color: #B44668;
+        color:white;
+        font-weight:bold;
+        font-size:1.1rem;
+        padding:0.5em 0;
+        border:0px;
+        border-radius:20px;
+        cursor:pointer;
+
+    }
+    .disabledButton{
+        opacity:0.5;
+    }
+}
+
 .form-group{
     width:100%;
     margin:0.7rem auto;
+
+    .userInfo{
+        font-size:1.2em;
+    }
 
     label,input{
         display:block;  
@@ -81,25 +128,8 @@
             left:15px;
         }
     }
-}
 
-.submit-button{
-        
-    input{
-        display:block;
-        width:99%;
-        background-color: #B44668;
-        color:white;
-        font-weight:bold;
-        font-size:1.1rem;
-        padding:0.5em 0;
-        border:0px;
-        border-radius:20px;
-
-    }
-    .disabledButton{
-        opacity:0.5;
-    }
+   
 }
 
 

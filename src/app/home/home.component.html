@@ -1,9 +1,12 @@
-<div class="home">
+<div class="loader" *ngIf="showLoader">
+    <app-loader></app-loader>
+</div>
+<div class="home" *ngIf="!showLoader">
     <!-- hero section of home page -->
     <div class="hero">
-        <img src="../../assets/card.png" alt="home card image" class="hero_img">
+        <img src="../../assets/card.png" alt="home card image" class="hero_img" @slideFromLeft>
         <div class="hero_content">
-            <div class="hero_content_position_div">
+            <div class="hero_content_position_div" @slideFromRight> 
                 <h1>Welcome to card zone!</h1>
                 <div class="hero_content_mission">
                     <p>Why buy cards here?</p>
