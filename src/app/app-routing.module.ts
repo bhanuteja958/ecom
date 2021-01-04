@@ -9,6 +9,9 @@ import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { AddressesComponent } from './addresses/addresses.component';
 import { OrderComponent } from './order/order.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { SelectAddressComponent } from './select-address/select-address.component';
+
 
 const routes: Routes = [
   {path:"",component:HomeComponent ,data:{animation:"Home"}},
@@ -19,7 +22,9 @@ const routes: Routes = [
   {path:"cart",component:CartComponent,data:{animation:"cart"}},
   {path:"user",loadChildren:()=>import('./user/user.module').then(m=>m.UserModule)},
   {path:"addresses",component:AddressesComponent,data:{animation:"address"}},
-  {path:"order",component:OrderComponent}
+  {path:"select-address",component:SelectAddressComponent},
+  {path:"order",component:OrderComponent},
+  {path:"about-us",component:AboutUsComponent}
   
 ];
 

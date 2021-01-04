@@ -104,3 +104,30 @@
         cursor:pointer;
     }   
 }
+
+.order-greetings{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color:#5cb85c;
+   font-size:3.5em;
+   font-weight: bold;
+   height:60vh;
+   animation:  fade 0.5s ease-in-out;
+
+   img{
+       width:2em;
+       height:auto;
+       margin-right:0.3em;
+   }
+
+}
+
+@keyframes fade{
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1;
+    }
+}

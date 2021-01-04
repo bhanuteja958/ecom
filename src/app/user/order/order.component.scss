@@ -1,0 +1,46 @@
+*{
+    margin:0;
+}
+
+.orders-container{
+    width:50%;
+    margin:auto;
+
+    .order{
+        box-shadow: 0px 2px 2px 2px #AAAAAA;
+        padding:1em;
+        margin:1em 0;
+        border-radius: 1em;
+        span{
+            font-weight:bold;
+        }
+
+        .order-status{
+            padding:0.3em 0.5em;
+            border-radius:1em;
+            color:white;
+            margin:0.3em 0;
+            font-weight: bold;
+            display:inline-block
+        }
+
+        .order-processing{
+            background-color: #5bc0cc;
+        }
+
+        .order-completed{
+            background-color: #5cb85c;
+        }
+
+        .order-cancelled{
+            background-color: #d9534f;
+        }
+
+        .view-summary{
+            font-weight: bold;
+            color:#0275d8;
+            text-align: right;
+            cursor: pointer;
+        }
+    }
+}

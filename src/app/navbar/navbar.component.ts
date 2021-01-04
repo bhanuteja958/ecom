@@ -68,12 +68,17 @@ export class NavbarComponent implements OnInit {
   logout(){
     auth().signOut().then(()=>{
         this.userService.clearUser();
+        this.cartService.clearFromCart();
         this.router.navigate(['/']);
     })
   }
 
   onCartClick(){
     this.router.navigate(['/cart'])
+  }
+
+  onNavLinkClick(link){
+    this.router.navigate([`user/${link}`])
   }
 
   onOutSideClick(){

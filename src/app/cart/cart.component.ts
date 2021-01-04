@@ -31,6 +31,6 @@ export class CartComponent implements OnInit {
   }
 
   onCheckout():void{
-    this.router.navigate(['/order'])
+    this.router.navigate(['/select-address'])
   }
 }

@@ -1,0 +1,11 @@
+<div class="orders-container">
+    <h1>Orders</h1>
+    <div class="order" *ngFor="let order of orders">
+        <p *ngIf="order.orderStatus === 0" class="order-processing order-status">Order Processing</p>
+        <p *ngIf="order.orderStatus === 1" class="order-completed order-status">Order Completed</p>
+        <p *ngIf="order.orderStatus === 2" class="order-cancelled order-status">Order Cancelled</p>
+        <p> <span>OrderId:</span> {{order.orderId}}</p>
+        <p> <span>OrderDate:</span> {{order.orderDate}}</p>
+        <p class="view-summary" (click)="onViewSummaryClick(order.orderId)">View Order Summary</p>
+    </div>
+</div>

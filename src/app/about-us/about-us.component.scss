@@ -1,0 +1,41 @@
+.container{
+    width:90%;
+    margin:auto;
+}
+.service {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+}
+.service h1 {
+    padding: 1rem;
+    font-weight: bolder;
+}
+
+.service .service-col {
+    margin:10px auto;
+    width:80%;
+}
+
+.service .service-content {
+    padding: 30px 15px;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: slategray 2px 2px 10px;
+    border-radius: 5%;
+}
+
+.service .service-content i {
+    color: #FF6F61;
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+
+// .service .service-content h2 {
+//     font-size: 18px;
+// }
+
+// .service .service-content p {
+//     font-size: 15px;
+//     margin: 0;
+// }

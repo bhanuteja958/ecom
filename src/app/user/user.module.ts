@@ -4,10 +4,12 @@ import {FormsModule} from '@angular/forms';
 
 import { UserRoutingModule } from './user-routing.module';
 import { AccountComponent } from './account/account.component';
+import { OrderComponent } from './order/order.component';
+import { SummaryComponent } from './summary/summary.component';
 
 
 @NgModule({
-  declarations: [AccountComponent],
+  declarations: [AccountComponent, OrderComponent, SummaryComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

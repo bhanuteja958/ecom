@@ -29,15 +29,17 @@ export class AddressesComponent implements OnInit {
     this.showForm = false;
     this.showError = false;
     this.address = {
+      name:addressForm.fullName,
       email: addressForm.email,
       address1: addressForm.addressLine1,
       address2: addressForm.addressLine2,
       city: addressForm.city,
       state: addressForm.state,
       zip: addressForm.ZIPCode,
-      country: addressForm.country,
+      country: "India",
       phoneNumber: addressForm.phoneNumber
     };
+    console.log(this.address);
     this.addToAddresses(addressForm);
   }
   addToAddresses(addressForm): void{
@@ -48,6 +50,7 @@ export class AddressesComponent implements OnInit {
         // user.addresses.push(this.address);
         firestore().collection("users").doc(user.uid).get().then((doc)=>{
           this.user = doc.data();
+          console.log(this.user.addresses);
         }).then(()=>{
           firestore().collection("users").doc(user.uid).set({
             addresses:[...this.user.addresses,this.address]
@@ -60,7 +63,7 @@ export class AddressesComponent implements OnInit {
         this.showSuccess = true;
         this.showForm = false;
         setTimeout(()=>{
-          this.router.navigate(['/']);
+          this.router.navigate(['/select-address']);
         },1000);
       } else{
         this.showLoader = false;

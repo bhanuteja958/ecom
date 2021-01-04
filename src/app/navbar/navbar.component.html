@@ -4,8 +4,7 @@
         <ul class="normal_links">
             <li><a routerLink="/">Home</a></li>
             <li><a routerLink="/shop">Shop</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a routerLink="/about-us">About</a></li>
         </ul>
         <div class="account" *ngIf="loggedIn" tabindex="1"  (mouseleave)="onOutSideClick()" >
             <p class="username" (click)="onAccountClick()"   >
@@ -13,15 +12,14 @@
                 <img src="../../assets/chevron_down.svg" alt="chevron down"  [style.transform]="'rotate('+angle+'deg)'">
             </p>
             <ul class="account-dropdown" *ngIf="showDropDown" @drop >
-                <li>Account</li>
-                <li>Orders</li>
-                <li><a routerLink = "/addresses">Addresses</a></li>
+                <li (click)="onNavLinkClick('account')">Account</li>
+                <li (click)="onNavLinkClick('orders')">Orders</li>
                 <li (click)="logout()">Logout</li>
             </ul>
         </div>
         <button (click)="onSignUpClick()" *ngIf="!loggedIn">SignUp</button>
         <button (click)="onLoginClick()" *ngIf="!loggedIn">Login</button>
-        <div class="cart"(click)="onCartClick()">
+        <div class="cart" (click)="onCartClick()" *ngIf="loggedIn === true">
             <img src="../../assets/cart.svg" alt="cart icon" >
             <span class="cart-item-count">{{cartService.count}}</span>
         </div>

@@ -47,4 +47,10 @@ export class CartService {
     this.count -= cartItem.count;
     console.log(this.cart)
   }
+
+  clearFromCart():void{
+    this.cart = [];
+    this.count = 0;
+    this.total = 0;
+  }
 }

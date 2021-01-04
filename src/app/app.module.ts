@@ -18,6 +18,8 @@ import { CartComponent } from './cart/cart.component';
 import { AddressesComponent } from './addresses/addresses.component'
 import { from } from 'rxjs';
 import { OrderComponent } from './order/order.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { SelectAddressComponent } from './select-address/select-address.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyCxij-K5h3PI6adLgOhn8IIAppnzBvuGnU",
@@ -45,7 +47,9 @@ firebase.initializeApp(firebaseConfig);
     LoaderComponent,
     CartComponent,
     AddressesComponent,
-    OrderComponent
+    OrderComponent,
+    AboutUsComponent,
+    SelectAddressComponent
   ],
   imports: [
     BrowserModule,

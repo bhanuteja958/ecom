@@ -1,0 +1,19 @@
+<div class="select-address-container">
+    <button (click)="onAddAddressClick()">Add an adrress</button>
+    <p class='seperator'>or</p>
+    <div class="user-addresses">
+        <h2>Select an address:</h2>
+        <ol>
+            <li *ngFor="let address of addresses;let i=index"  class="user-address" (click)="selectAddress(i)">
+                <p><span>Address Line1</span> : {{address.address1}}</p>
+                <p><span>Address Line2</span>: {{address.address2}}</p>
+                <p><span>City</span>: {{address.city}}</p>
+                <p><span>State</span>: {{address.state}}</p>
+                <p><span>Email</span>: {{address.email}}</p>
+                <p><span>Phone NUmber</span>: {{address.phoneNumber}}</p>
+                <p><span>ZipCode</span>: {{address.zip}}</p>
+            </li>
+           
+        </ol>
+    </div>
+</div>

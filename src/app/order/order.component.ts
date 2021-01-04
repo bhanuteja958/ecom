@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
+import { OrderService } from '../services/order.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,16 +11,33 @@ import { UserService } from '../services/user.service';
 })
 export class OrderComponent implements OnInit {
 
-  user:any = {}
+  order:any = {};
+  showGreeting:boolean = false;
 
-  constructor(private cartService:CartService,
-    private userService:UserService) { 
+  constructor(
+    private cartService:CartService,
+    private userService:UserService,
+    private orderService:OrderService,
+    private router:Router
+  ) { 
 
   }
 
   ngOnInit() {
-    this.userService.getUser().then((user)=>{
-        this.user = user
+    this.orderService.getOrder().then((order)=>{
+      this.order = order
+    });
+  }
+
+  onPlaceOrder(){
+    this.orderService.saveOrder().then(()=>{
+      this.cartService.clearFromCart();
+      this.showGreeting = true;
+      setTimeout(()=>{
+        this.router.navigate(['/'])
+      },1500)
+    }).catch((error)=>{
+      console.log(error.message)
     })
   }
 

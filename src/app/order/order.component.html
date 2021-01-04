@@ -1,4 +1,4 @@
-<div class="order-container">
+<div class="order-container" *ngIf="!showGreeting">
     <div class="order-details">
         <h1>Order Summary</h1>
         <table>
@@ -15,13 +15,13 @@
         </table>
         <div class="address">
             <h2>Address</h2>
-            <p>Address1 : {{user.addresses[0].address1}}</p>
-            <p>Address2 : {{user.addresses[0].address2}}</p>
-            <p>Email : {{user.addresses[0].email}}</p>
-            <p>Phone Number : {{user.addresses[0].phoneNumber}}</p>
-            <p>City : {{user.addresses[0].city}}</p>
-            <p>State : {{user.addresses[0].state}}</p>
-            <p>ZipCode : {{user.addresses[0].zip}}</p>
+            <p>Address1 : {{order.deliveryAddress.address1}}</p>
+            <p>Address2 : {{order.deliveryAddress.address2}}</p>
+            <p>Email : {{order.deliveryAddress.email}}</p>
+            <p>Phone Number : {{order.deliveryAddress.phoneNumber}}</p>
+            <p>City : {{order.deliveryAddress.city}}</p>
+            <p>State : {{order.deliveryAddress.state}}</p>
+            <p>ZipCode : {{order.deliveryAddress.zip}}</p>
         </div>
     </div>
     <div class="payment-methods">
@@ -46,9 +46,13 @@
         </table>
         <h2>Payment Type:</h2>
         <div class="payment-type">
-            <input type="radio" id="cash" name="cash">
+            <input type="radio" id="cash" name="cash" checked="true" readonly>
             <label for="cash">Cash on delivery</label>
         </div>
-        <button>Continue</button>
+        <button (click)="onPlaceOrder()">Place Order</button>
     </div>
+</div>
+<div class="order-greetings" *ngIf="showGreeting">
+            <img src="../../assets/tickmark.svg" alt="tickmark">
+            <p>Thanks for ordering</p>   
 </div>

@@ -1,0 +1,31 @@
+<div class="summary-container">
+    <button class="cancel-order" *ngIf="order.orderStatus===0"(click)="onCancelOrderClick()">Cancel Order</button>
+    <h1>Order Summary</h1>
+    <div class="summary-details">
+        <p *ngIf="order.orderStatus === 0" class="order-processing order-status">Order Processing</p>
+        <p *ngIf="order.orderStatus === 1" class="order-completed order-status">Order Completed</p>
+        <p *ngIf="order.orderStatus === 2" class="order-cancelled order-status">Order Cancelled</p>
+        <p><span>OrderId:</span> {{order.orderId}}</p>
+        <p><span>OrderDate:</span> {{order.orderDate}}</p>
+        <p><span>PaymentType:</span> Cash On Delivery</p>
+        <table >
+            <h2>OrderItems</h2>
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+            </tr>
+            <tr *ngFor="let item of order.orderItems">
+                <td>{{item.name}}</td>
+                <td>{{item.count}}</td>
+                <td>{{item.price*item.count}}</td>
+            </tr>
+        </table>
+        <div class="price">
+            <p><span>Subtotal:</span> Rs.{{order.subTotalPrice}}</p>
+            <p><span>Taxes:</span> Rs.{{order.taxPrice}}</p>
+            <p><span>Delivery Charges:</span> Rs.500</p>
+            <p><span>Total Price:</span> Rs.{{order.totalPrice | number:"1.0-0" }}</p>
+        </div>
+    </div>
+</div>
